@@ -51,25 +51,25 @@ function page_content()
             echo (isBitten() ? "<p>Charlie bit your finger!</p>" : "<p>Charlie did not bite your finger!</p>");
         else if($page == "countWords")
             echo '<form  action="" method="GET">
-                    <input type="text" name="str">
+                    <input type="text" name="str" placeholder="Enter Sentence">
                     <input type="submit" value="Submit">
                 </form>';
         else if($page == "SignUp"){
             echo '<form  action="" method="POST">
-                    <input  required type="text" name="username">
-                    <input required type="password" name="password">
-                    <input required type="tel" name="phone">
+                    <input  required type="text" name="username" placeholder="Enter Username">
+                    <input required type="password" name="password" placeholder="Enter Password">
+                    <input required type="tel" name="phone" placeholder="Enter Phone Number">
                     <input type="submit" value="Register">
                 </form>';
         }
         else if($page == "SignIn"){
-            if($_SESSION['LoggedIn'] == true){
+            if(isset($_SESSION['LoggedIn']) && $_SESSION['LoggedIn'] == true){
                 echo 'You are already Logged In!<form action="" method="POST"><input type="hidden" value="LogOut" name="LogOut"><button type="submit">Log Out</button></form>';
 
             }else{
                 echo '<form  action="" method="POST">
-                        <input  required type="text" name="username">
-                        <input required type="password" name="password">
+                        <input  required type="text" name="username" placeholder="Enter Username">
+                        <input required type="password" name="password" placeholder="Enter Password">
                         <input type="checkbox" value="1" name="isRememberMeSet">Remember me</input>
                         <input type="submit" value="Submit">
                      </form>';
@@ -77,23 +77,23 @@ function page_content()
         }
         else if($page == "ResetPassword"){
             echo '<form  action="" method="POST">
-                    <input  required type="text" name="username">
-                    <input required type="phone" name="phone">
+                    <input  required type="text" name="username" placeholder="Enter Username">
+                    <input required type="phone" name="phone" placeholder="Enter Phone Number">
                     <input type="submit" value="Submit">
                 </form>';
         }
         else if($page == "ChangePassword"){
             echo '<form  action="" method="POST">
-                    <input  required type="text" name="username">
-                    <input required type="password" name="oldPassword">
-                    <input required type="password" name="newPassword">
+                    <input  required type="text" name="username" placeholder="Enter Username">
+                    <input required type="password" name="oldPassword" placeholder="Enter Old Password">
+                    <input required type="password" name="newPassword" placeholder="Enter New Password">
                     <input type="submit" value="Submit">
                 </form>';
         }
         else if($page == "LogOut"){
                 echo 'You are Logged Out! <form  action="" method="POST">
-                        <input  required type="text" name="username">
-                        <input required type="password" name="password">
+                        <input  required type="text" name="username" placeholder="Enter Username">
+                        <input required type="password" name="password" placeholder="Enter Password">
                         <input type="checkbox" value="1" name="isRememberMeSet">Remember me</input>
                         <input type="submit" value="Submit">
                      </form>';
@@ -118,9 +118,9 @@ function page_content()
             echo "Registration is successful";
           } catch(PDOException $e) {
             echo '<form  action="" method="POST">
-                    <input  required type="text" name="username">
-                    <input required type="password" name="password">
-                    <input required type="tel" name="phone">
+                    <input  required type="text" name="username" placeholder="Enter Username">
+                    <input required type="password" name="password" placeholder="Enter Password">
+                    <input required type="tel" name="phone" placeholder="Enter Phone Number">
                     <input type="submit" value="Register">
                 </form></br>'.$sql . "<br>" . $e->getMessage();
           }
@@ -136,8 +136,8 @@ function page_content()
             echo "Welcome ".$_POST['username']." !";
           } catch(PDOException $e) {
             echo '<form  action="" method="POST">
-                    <input  required type="text" name="username">
-                    <input required type="password" name="password">
+                    <input  required type="text" name="username" placeholder="Enter Username">
+                    <input required type="password" name="password" placeholder="Enter Password">
                     <input type="submit" value="Submit">
                 </form></br>'.$sql . "<br>" . $e->getMessage();
           }
@@ -148,8 +148,8 @@ function page_content()
             $user = $conn->query($sql);
             if($user==null)
                 echo 'You have not registered yet!<form  action="" method="POST">
-                        <input  required type="text" name="username">
-                        <input required type="phone" name="phone">
+                        <input  required type="text" name="username" placeholder="Enter Username">
+                        <input required type="phone" name="phone" placeholder="Enter Password">
                         <input type="submit" value="Submit">
                     </form></br>';
             else{
@@ -161,8 +161,8 @@ function page_content()
             }
           } catch(PDOException $e) {
             echo '<form  action="" method="POST">
-                    <input  required type="text" name="username">
-                    <input required type="phone" name="phone">
+                    <input  required type="text" name="username" placeholder="Enter Username">
+                    <input required type="phone" name="phone" placeholder="Enter Phone Number">
                     <input type="submit" value="Submit">
                 </form></br>'.$sql . "<br>" . $e->getMessage();
           }
@@ -173,9 +173,9 @@ function page_content()
             $user = $conn->query($sql);
             if($user==null)
                 echo 'You have entered wrong credentials!<form  action="" method="POST">
-                        <input  required type="text" name="username">
-                        <input required type="password" name="oldPassword">
-                        <input required type="password" name="newPassword">
+                        <input  required type="text" name="username" placeholder="Enter Username">
+                        <input required type="password" name="oldPassword" placeholder="Enter Old Password">
+                        <input required type="password" name="newPassword" placeholder="Enter New Password">
                         <input type="submit" value="Submit">
                     </form>';
             else{
@@ -187,9 +187,9 @@ function page_content()
             }
           } catch(PDOException $e) {
             echo '<form  action="" method="POST">
-                    <input  required type="text" name="username">
-                    <input required type="password" name="oldPassword">
-                    <input required type="password" name="newPassword">
+                    <input  required type="text" name="username" placeholder="Enter Username">
+                    <input required type="password" name="oldPassword" placeholder="Enter Old Password">
+                    <input required type="password" name="newPassword" placeholder="Enter New Password">
                     <input type="submit" value="Submit">
                 </form></br>'.$sql . "<br>" . $e->getMessage();
           }
@@ -198,8 +198,8 @@ function page_content()
         $_SESSION['LoggedIn'] = false;
         setcookie("user",$_COOKIE['user'], time() - 3600);
         echo 'You are Logged Out!<form  action="" method="POST">
-                <input  required type="text" name="username">
-                <input required type="password" name="password">
+                <input  required type="text" name="username" placeholder="Enter Username">
+                <input required type="password" name="password" placeholder="Enter Password">
                 <input type="submit" value="Submit">
             </form>';
     }

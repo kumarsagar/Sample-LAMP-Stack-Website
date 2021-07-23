@@ -24,6 +24,5 @@ function config($key = '')
         'content_path' => 'content',
         'version' => '1.0',
     ];
-
     return isset($config[$key]) ? $config[$key] : null;
 }
